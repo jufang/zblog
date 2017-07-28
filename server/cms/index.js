@@ -9,7 +9,8 @@ const Post = mongoose.model('Post');
 const Tag = mongoose.model('Tag');
 const Tagging = mongoose.model('Tagging');
 const crypto 		= require('crypto');
-const moment = require('moment')
+const moment = require('moment');
+const _ = require('lodash');
 
 //登录与注册
 router.post('/authors/sign-in',function(req,res){
@@ -236,25 +237,63 @@ router.post('/posts',function(req,res){
   const postD = req.body.post;
   let   tagD  = postD.taggings_attributes ? postD.taggings_attributes:null;
   let   itemD = postD.items_attributes ? postD.items_attributes:null;
-
-  // Post.create({
-  //   title:postD.title,
-  //   published_at:moment(postD.published_at,"YYYY/MM/DD HH:mm"),
-  //   lead_sentence:postD.ead_sentence,
-  // },function(err,data){
-  //   if(err){
-  //     res.status(400).json({"errorMessage":'创建文章失败'})
-  //   }else{
-  //   }
-  // })
- if(tagD){
-  tagD.map(function(v){
-    v['text']
-  })
+  let  itemImage = null,itemText = null;
+  let  sort_rank = 0
+  if(tagD){
+    tagD = tagD.map((v)=>{
+      return _.mapKeys(v,(value,key)=>'name')
+    })
   }
-  const tag = new Tag({
-
+  if(itemD){
+    itemImage = itemD.filter((v)=> v.target_type=='ItemImage')
+    itemText = itemD.filter((v) =>  v.target_type=='ItemText')
+  }
+  const PostEntry = new Post({
+    title:postD.title,
+    published_at:moment(postD.published_at,"YYYY/MM/DD HH:mm"),
+    lead_sentence:postD.ead_sentence,
   })
+  Tag.create(tagD,function(err){
+    if(err){
+      res.status(400).json({"errorMessage":'创建标签失败'})
+    }
+  }).then(function(d0){
+    d0.map(function(data){
+      Tagging.create({
+        'tag_id':data._id,
+        'post_id':PostEntry._id
+      })
+    })
+  })
+  Item_image.create(itemImage,function(err){
+    if(err){
+      res.status(400).json({"errorMessage":'创建图片失败'})
+    }
+  }).then(function(d0){
+    d0.map(function(data){
+      Item.create({
+        'post_id':PostEntry._id,
+        'target_id':data._id,
+        'target_type':'ItemImage',
+        'sort_rank':++sort_rank
+      })
+    })
+  })
+   Item_text.create(itemText,function(err){
+    if(err){
+      res.status(400).json({"errorMessage":'创建内容失败'})
+    }
+  }).then(function(d0){
+    d0.map(function(data){
+      Item.create({
+        'post_id':PostEntry._id,
+        'target_id':data._id,
+        'target_type':'ItemText',
+        'sort_rank':++sort_rank
+      })
+    })
+  })
+  PostEntry.save()
 })
 /*
 {
