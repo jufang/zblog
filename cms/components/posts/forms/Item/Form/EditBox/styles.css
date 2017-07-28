@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  height: 60px;
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.list {
+  margin-top:10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  list-style: none;
+  vertical-align: middle;
+}
