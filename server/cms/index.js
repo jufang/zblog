@@ -158,7 +158,12 @@ router.patch('/posts/:id/acceptance',function(req,res){
     })
   })
 })
-
+router.get('posts/:id/edit',function(req,res){
+  const id = req.params.id;
+  Post.findOne({_id:id},function(err,data){
+    //res.json(data)
+  })
+})
 var generateSalt = function(){
 	var set = '0123456789abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ';
 	var salt = '';
