@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
+var Schema   = mongoose.Schema;
 
-var TagSchema = new mongoose.Schema({
-    name: {type:String,required: true},
+var TagSchema = new Schema({
+    text: {type: String, required: true },
     created_at: {
         type: Date,
         default: Date.now
@@ -10,6 +11,16 @@ var TagSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+}, {
+    toJSON: {
+        virtuals: true,
+        transform(doc, ret){
+            ret.id = ret._id;
+            ret.v = ret.__v;
+            delete ret._id;
+            delete ret.__v;
+        }
+    }
 });
 
-mongoose.model('Tag', TagSchema);
+export default mongoose.model('Tag', TagSchema);

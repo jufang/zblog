@@ -71,12 +71,44 @@ startDbPromise.then(() => {
     resave: true,
     saveUninitialized: true
   }))
+  app.use('/cms/api/v1/authors', require('./cms/author'));
+  app.use('/cms/api/v1/posts', require('./cms/post'));
 
-  require('./routes')(app,root);
+  app.get('/cms/*', (req,res,next) => {
+    res.sendFile('/index.html', {root: path.join(root, 'public')})
+  });
+
+  app.use((req, res, next) => {
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+  });
+
+  // 处理路由错误
+  app.use((err, req, res, next) => {
+    console.error(err); // 输出到控制台
+    res.status(err.status || 500);
+    res.send(err.message); // 输出到前端
+  });
+  
     // 起服务
   app.listen(serverPort, (err, res) => err ?
     handleError(err) :
     console.log(`app served on port ${serverPort}`));
 }).catch(err => console.log(err));
 
-
+function handleError(err){
+  switch (err.code){
+    case 'EACCES':
+      console.error(`port ${serverPort} requires elevated privileges`);
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(`port ${serverPort} is already in use`);
+      process.exit(1);
+      break;
+    default:
+      console.log(err);
+      process.exit(1);
+  }
+}

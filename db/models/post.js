@@ -1,27 +1,25 @@
+'use strict';
+
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
-
-var TagSchema = new Schema({
-    name: {type: String, required: true },
-    created_at: {
-        type: Date,
-        default: Date.now
-    },
-    updated_at: {
-        type: Date,
-        default: Date.now
-    },
-});
+var moment = require('moment');
 
 var PostSchema = new Schema({
-    title: {type:String,required: true},
+    title: {
+        type:String,
+        required: true
+    },
     accepted: {
         type:Boolean,
         default:false
     },
     lead_sentence:String,
     items:Array,
-    Tags:[{type: Schema.Types.ObjectId, ref: 'Tag'}],
+    tags:[{
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'Tag'
+    }],
     published_at: {
         type: Date,
         default: Date.now
@@ -35,6 +33,27 @@ var PostSchema = new Schema({
         default: Date.now,
         index:true
     },
-});
-mongoose.model('Tag', TagSchema);
-mongoose.model('Post', PostSchema);
+}, {
+    toJSON: {
+        virtuals: true,
+        transform(doc, ret){
+            ret.publishedAt = moment(ret.published_at).format("YYYY/MM/DD"),
+            ret.status =  status(ret.accepted,ret.published_at),
+            ret.id = ret._id;
+            ret.v = ret.__v;
+            delete ret.published_at;
+            delete ret._id;
+            delete ret.__v;
+        }
+    }
+})
+function status(accepted,time){
+  if(!accepted) return 0;
+  if(+time >= +new Date()){
+    return 1
+  }else{
+    return 2
+  }
+}
+export default  mongoose.model('Post', PostSchema);
+
