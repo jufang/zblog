@@ -37,6 +37,7 @@ var PostSchema = new Schema({
     toJSON: {
         virtuals: true,
         transform(doc, ret){
+            ret.leadSentence =ret.lead_sentence,
             ret.publishedAt = moment(ret.published_at).format("YYYY/MM/DD"),
             ret.status =  status(ret.accepted,ret.published_at),
             ret.id = ret._id;
@@ -44,6 +45,7 @@ var PostSchema = new Schema({
             delete ret.published_at;
             delete ret._id;
             delete ret.__v;
+            delete ret.lead_sentence;
         }
     }
 })
