@@ -1,0 +1,43 @@
+.root {
+  width: 47%;
+  margin-right: 3%;
+}
+
+.title {
+  font-size: 24px;
+  font-size: 2.4rem;
+  border-bottom: 1px solid border-color;
+  font-weight: 700;
+  color: rgba(0,0,0,0.8);
+  letter-spacing: -.02em;
+}
+
+.button {
+     font-size: 12px;
+  font-size: 1.2rem;
+  display: inline-block;
+  height: 37px;
+  padding: 0 16px;
+  color: #009E5D;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #009E5D;
+  vertical-align: bottom;
+  white-space: nowrap;
+  border-radius: 999em;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 35px;
+}
+.button:hover {
+  color:#1c9963;
+
+}
+
+.list {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  list-style: none;
+  padding: 0;
+}

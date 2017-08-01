@@ -77,7 +77,9 @@ startDbPromise.then(() => {
   app.get('/cms/*', (req,res,next) => {
     res.sendFile('/index.html', {root: path.join(root, 'public')})
   });
-
+  app.get('/*', (req,res,next) => {
+    res.sendFile('/client.html', {root: path.join(root, 'public')})
+  });
   app.use((req, res, next) => {
     const err = new Error('Not Found');
     err.status = 404;

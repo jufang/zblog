@@ -5,14 +5,18 @@ const  ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
 
-  entry: [
-    'webpack-hot-middleware/client',
-    './cms/index.js',
-  ],
+  entry: {
+    'cms': './cms/index.js',
+    'client': './client/index.js'
+  },
+  // [
+  //   'webpack-hot-middleware/client',
+  //   './cms/index.js',
+  // ],
 
   output: {
     path: __dirname + '/public/js/',
-    filename: 'index.js',
+    filename: '[name]/index.js',
     publicPath: '/dist/',
   },
   resolve: {
@@ -51,7 +55,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('./css/bundle.css', { ignoreOrder: true } ),
+    new ExtractTextPlugin('./css/[name]/bundle.css', { ignoreOrder: true } ),
     new webpack.ProvidePlugin({
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),

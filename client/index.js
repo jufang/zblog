@@ -1,37 +1,27 @@
+import 'shared/styles/vendors';
+import 'shared/styles/globals';
+
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { configureStore } from './redux/store';
-import { DevTools} from './redux/DevTools';
-import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
+import useScroll from 'react-router-scroll';
+import { createStore, applyMiddleware } from 'redux';
 
-import App from './App';
+import routes from './routes';
+import reducers from './reducers';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import thunk from 'redux-thunk';
+const store = createStore(reducers, applyMiddleware(thunk));
 
-// If we ever wanted to do server-side rendering, the intial state would get passed to the front end by passing
-// the server-side store to the "__INITIAL_STATE__" client-side global variable via a script tag and "hydrating"
-// our client-side state with it here
-// const store = configureStore(window.__INITIAL_STATE__ || { user: null, posts: []});
-const store = configureStore();
-if (process.env.NODE_ENV === 'production') {
+injectTapEventPlugin();
 
-  render((
-    <Provider store={store}>
-      <Router history={browserHistory}>
-        <Route path="/" component={App} />
-      </Router>
-    </Provider>
-  ), document.getElementById('root'));
-
-} else {
-  render((
-    <Provider store={store}>
-      <div>
-        <Router history={browserHistory}>
-          <Route path="/" component={App} />
-        </Router>
-        <DevTools />
-      </div>
-    </Provider>
-  ), document.getElementById('root'));
-
-}
+ReactDOM.render(
+  <Provider store={store}>
+    <Router
+      history={browserHistory}
+      routes={routes}
+      render={applyRouterMiddleware(useScroll())}
+    />
+  </Provider>
+  , document.querySelector('.container'));
