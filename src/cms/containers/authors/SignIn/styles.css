@@ -1,0 +1,37 @@
+.root {
+  margin-bottom: 40px;
+}
+
+.heading {
+    font-size: 28px;
+  font-size: 2.8rem;
+  line-height: 1.12;
+  color: #333333;
+  letter-spacing: -.022em;
+  font-weight: 700;
+}
+
+.button {
+  display: inline-block;
+  color: #009E5D;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #009E5D;
+  vertical-align: bottom;
+  white-space: nowrap;
+  border-radius: 999em;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  font-size: 1.6rem;
+  height: 40px;
+  padding: 0 24px;
+  line-height: 38px;
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+}
+.button:hover{
+  color:#1c9963;
+}

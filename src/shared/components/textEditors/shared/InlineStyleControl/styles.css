@@ -1,0 +1,16 @@
+.root {
+  margin-bottom: 5px;
+   font-size: 14px;
+  font-size: 1.4rem; 
+  font-family: 'Helvetica', sans-serif;
+  user-select: none;
+}
+
+.button {
+  margin-right:10px;
+  display: inline-block;
+  padding: 2px 0;
+  color:#8F8F8F;
+  cursor: pointer;
+}
+

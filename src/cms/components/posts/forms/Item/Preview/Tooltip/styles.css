@@ -1,0 +1,21 @@
+.root {
+  position: relative;
+}
+
+.list {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  margin-top: -16px;
+}
+
+.listButton {
+  transition: 0.5s;
+  border-radius: 24px;
+}
+.listButton:hover{
+  cursor: pointer;
+  background-color: lightgray !important;
+  opacity: .7;
+}

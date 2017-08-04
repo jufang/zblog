@@ -1,0 +1,12 @@
+.root {
+  margin-top: 5px;
+
+  display: flex;
+}
+
+.item {
+  margin-left: 5px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  color:#009E5D;
+}

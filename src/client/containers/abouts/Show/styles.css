@@ -1,0 +1,35 @@
+.heading {
+  font-size: 32px;
+  font-size: 3.2rem;
+
+  color: rgba(0,0,0,0.8);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.subHeading {
+   margin-top:40px;
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 1.12;
+  letter-spacing: -.022em;
+  font-weight: 300;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.siteDescription {
+  margin-top:20px
+}
+
+.text {
+   font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  font-size: 21px;
+  font-size: 2.1rem;
+
+  color: rgba(0,0,0,0.8);
+  font-weight: 400;
+  line-height: 1.58;
+  letter-spacing: -.003em;
+}
