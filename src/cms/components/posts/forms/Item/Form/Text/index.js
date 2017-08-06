@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import TextEditor from 'shared/components/textEditors/Editor/index';
 import IconButton from 'material-ui/IconButton';

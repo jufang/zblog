@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TARGET_TYPES from 'shared/constants/targetTypes';
 import IconButton from 'material-ui/IconButton';
 import ContentRemoveCircle from 'material-ui/svg-icons/content/remove-circle';

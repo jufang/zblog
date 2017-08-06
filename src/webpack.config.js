@@ -18,7 +18,12 @@ module.exports = {
   module: {
     loaders: [
         { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-        {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader','css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]')},
+        {test: /^((?!\.global).)*(css)$/, loader: ExtractTextPlugin.extract('style-loader','css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]')},
+        {
+          test: /\.global.(scss|css)$/,
+          loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        },
+        
         { test: /\.(jpg|png|gif)$/, loader: 'url-loader', exclude: /node_modules/ }
     ]
   },

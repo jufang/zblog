@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles';
 
 const propTypes = {
@@ -8,7 +9,9 @@ const propTypes = {
 function NoContent({ pageName }) {
   return (
     <div className={styles.root}>
-      <p className={styles.text}>{`we couldn't find any ${pageName}`}</p>
+      <p className={styles.text}>
+        {`we couldn't find any ${pageName}`}
+      </p>
     </div>
   );
 }

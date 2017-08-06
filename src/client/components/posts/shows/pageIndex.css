@@ -1,0 +1,47 @@
+.root {
+  margin-top: 10px;
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 0;
+  border-top: 1px solid #e6e6e6;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+.box {
+  display: flex;
+  width: 50%;
+  color: #8F8F8F;
+}
+
+.prevBox {
+  display: flex;
+  width: 50%;
+  color: #8F8F8F;
+  text-align: left;
+}
+
+.prevTitle {
+  width: 85%;
+  margin: auto 0;
+  vertical-align: middle;
+}
+
+.nextTitle {
+  width: 85%;
+  margin: auto 0;
+  vertical-align: middle;
+}
+
+.nextBox {
+  display: flex;
+  width: 50%;
+  color: #8F8F8F;
+  text-align: right;
+}

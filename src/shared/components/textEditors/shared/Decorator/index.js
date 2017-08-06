@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Entity, CompositeDecorator } from 'draft-js';
 import MultiDecorator from 'draft-js-multidecorators';
 import PrismDecorator from 'draft-js-prism';

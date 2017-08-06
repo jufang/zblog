@@ -1,11 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { fetchPost, resetPost } from 'client/actions/posts';
-import Tags from 'client/components/posts/shows/Tags/index';
-import Item from 'client/components/posts/shows/Item/index';
+import Tags from 'client/components/posts/shows/tagsIndex';
+import Item from 'client/components/posts/shows/itemIndex';
 import shallowCompare from 'react-addons-shallow-compare';
-import Pagination from 'client/components/posts/shows/Pagination/index';
+import Pagination from 'client/components/posts/shows/pageIndex';
 import ActionSchedule from 'material-ui/svg-icons/action/schedule';
 import inlineStyles from 'shared/styles/MaterialUI/index';
 
@@ -15,7 +16,7 @@ const propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string,
     publishedAt: PropTypes.string,
-    prevId: PropTypes.number,
+    prevId: PropTypes.string,
     prevTitle: PropTypes.string,
     nextId: PropTypes.number,
     nextTitle: PropTypes.string,
@@ -27,14 +28,13 @@ const propTypes = {
       targetType: PropTypes.string,
       description: PropTypes.string,
       image: PropTypes.string,
-      caption: PropTypes.string,
-      twitterId: PropTypes.string,
+      caption: PropTypes.string
     }).isRequired
   ),
 
   tags: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,

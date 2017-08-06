@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import LabelOutline from 'material-ui/svg-icons/action/label-outline';
 import inlineStyles from 'shared/styles/MaterialUI/index';
@@ -7,7 +8,7 @@ import styles from './styles';
 const propTypes = {
   tags: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,

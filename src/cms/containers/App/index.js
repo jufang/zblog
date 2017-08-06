@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import NavigationBar from 'cms/components/NavigationBar/index';
 import Footer from 'shared/components/Footer/index';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';

@@ -5,7 +5,7 @@ import App from './containers/App/index';
 import PostIndex from './containers/posts/Index/index';
 import PostForm from './containers/posts/Form/index';
 import PostShow from 'client/containers/posts/Show/index';
-import AboutShow from 'client/containers/abouts/Show/index';
+import AboutShow from 'client/containers/abouts/index';
 import AuthorForm from './containers/authors/Form/index';
 import AuthorSinUp from './containers/authors/SignUp/index';
 import AuthorSingIn from './containers/authors/SignIn/index';

@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { fetchPosts } from 'client/actions/posts';
-import Item from 'client/components/posts/indexes/Item/index';
+import Item from 'client/components/posts/indexes/index';
 import NoContent from 'shared/components/NoContent/index';
 import shallowCompare from 'react-addons-shallow-compare';
 import Infinite from 'react-infinite';
@@ -115,7 +116,6 @@ class PostIndex extends Component {
     return (
       <section>
         <Helmet title="Posts" />
-        <h1 className={styles.heading}>Posts</h1>
         {this.renderItems()}
       </section>
     );

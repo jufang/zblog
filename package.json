@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "start": "nodemon ./index",
-    "webpack:prod": "webpack --config src/webpack.config.prod.js",
-    "webpack:dev": "webpack --w --config src/webpack.config.js",
+    "webpack:prod": "rimraf public/css public/js && webpack --config src/webpack.config.prod.js",
+    "webpack:dev": "rimraf public/css public/js && webpack --w --config src/webpack.config.js",
     "build": "webpack --config webpack.config.prod.js",
     "postinstall": "npm build"
   },
   "dependencies": {
+    "@types/prop-types": "^15.5.1",
     "body-parser": "~1.13.2",
     "compression": "^1.6.1",
     "express": "~4.13.1",
@@ -55,6 +56,7 @@
     "react-tag-input": "^3.0.1",
     "react-tap-event-plugin": "^2.0.0",
     "redux-form": "^5.3.2",
+    "rimraf": "^2.6.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",

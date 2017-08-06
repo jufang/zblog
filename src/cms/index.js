@@ -1,4 +1,4 @@
-import 'shared/styles/vendors';
+import 'shared/styles/index.global';
 import 'shared/styles/globals';
 import React from 'react';
 import ReactDOM from 'react-dom';

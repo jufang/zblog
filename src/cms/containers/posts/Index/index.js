@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPosts, togglePost } from 'cms/actions/posts';
 import { Link } from 'react-router';
-import Item from 'cms/components/posts/indexes/Item/index';
+import Item from 'cms/components/posts/indexes/index';
 import NoContent from 'shared/components/NoContent/index';
 import {
   Table,
@@ -106,16 +107,16 @@ class PostIndex extends Component {
                 ID
               </TableHeaderColumn>
               <TableHeaderColumn colSpan="4" style={inlineStyles.headerColumn}>
-                Title
+                标题
               </TableHeaderColumn>
               <TableHeaderColumn colSpan="1" style={inlineStyles.headerColumn}>
-                Status
+                发布状态
               </TableHeaderColumn>
               <TableHeaderColumn colSpan="2" style={inlineStyles.headerColumn}>
-                Date
+                发布日期
               </TableHeaderColumn>
               <TableHeaderColumn colSpan="3" style={inlineStyles.headerColumn}>
-                Action
+                操作
               </TableHeaderColumn>
             </TableRow>
           </TableHeader>

@@ -16,5 +16,8 @@ function commonHead_user(req,res){
 }
 router.get("/",index);
 router.get("/cms/*",cms);
+router.get("/posts",index);
+router.get("/posts/*",index);
+router.get("/not-found",index)
 router.get("/n/common/*",commonHead_user);
 module.exports=router;

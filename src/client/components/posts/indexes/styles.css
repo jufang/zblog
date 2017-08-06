@@ -1,0 +1,42 @@
+.root {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.title {
+    font-size: 28px;
+  font-size: 2.8rem;
+  color: #333333;
+  font-weight: 700;
+}
+
+.leadSentence {
+  margin-top:5px;
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: #8F8F8F;
+  word-wrap: break-word;
+}
+
+.tagItem {
+  margin-top:5px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  display: flex;
+  color: #009E5D;
+}
+
+.tagName {
+  margin-left: 5px;
+}
+
+.publishDate {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: label-color;
+  text-align: right;
+}
+

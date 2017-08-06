@@ -5,7 +5,7 @@
   font-size: 1.8rem;
   position: relative;
   padding: 15px;
-  border: 1px solid border-color;
+  border: 1px solid #e6e6e6;
   background: #fff;
   cursor: text;
 }
@@ -24,48 +24,40 @@
 }
 
 .h2 {
-  font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
-  margin-left: -2.25px;
+  margin-top:10px;
+  font-family: "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", "sans","arial";
   font-weight: 700;
   font-style: normal;
-  font-size: 36px;
-  line-height: 1.15;
-  letter-spacing: -.02em;
+  font-size: 28px;
+  font-size: 2.4rem;
+  line-height: 1.6;
   color: rgba(0,0,0,0.8);
   -webkit-font-smoothing: antialiased;
 }
-.h2 + .text{
-   margin-bottom: 20px
-}
 .h3 {
-  font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
-  font-size: 28px;
-  font-size: 2.8rem;
-  margin-left: -1.75px;
+  margin-top:10px;
+  font-family: "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", "sans","arial";
+  font-size: 24px;
+  font-size: 2.4rem;
   color: #8F8F8F;
   font-weight: 300;
   font-style: normal;
-  line-height: 1.22;
-  letter-spacing: -.022em;
+  line-height: 1.6;
   word-wrap: break-word;
 }
-.h3 + .text{
-   margin-bottom: 10px
-}
 .text {
-  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
-  font-size: 21px;
-  font-size: 2.1rem;
+  font-family: "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", "sans","arial";;
+  font-size: 16px;
+  font-size: 1.6rem;
   color: rgba(0,0,0,0.8);
   font-weight: 400;
-  line-height: 1.58;
-  letter-spacing: -.003em;
-  margin-bottom:20px;
+  line-height: 1.8;
+  margin:10px 0;
 }
 
 
 .blockquote {
-      font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
   font-size: 21px;
   font-size: 2.1rem;
   color: rgba(0,0,0,0.8);
@@ -120,7 +112,7 @@
 }
 
 .urlInputBox {
-      font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
   font-size: 21px;
   font-size: 2.1rem;
   color: rgba(0,0,0,0.8);

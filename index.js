@@ -18,22 +18,24 @@ app.use(favicon(__dirname+"/public/favicon.ico"));
 
 app.set("view engine","html");
 app.engine("html",swig.renderFile);
-app.use(router);
-app.use(express.static(__dirname+"/public"));
 
-// app.all("/:site/api/*",function(req,res){
-// 	res.json({success:false,errMsg:"接口404"});
-// });
-// app.use(function(req,res){
-// 	res.redirect("/?status=404");
-// });
-app.use('/:site/api',proxy({
+app.use('(/cms)?/api/v1',proxy({
 	target:'http://127.0.0.1:3000',
 	changeOrigin:true,
 	router:{
 		'http://127.0.0.1:8000':'http://127.0.0.1:3000'
 	}
 }))
+
+app.use(router);
+app.use(express.static(__dirname+"/public"));
+
+app.all("/:site/api/*",function(req,res){
+	res.json({success:false,errMsg:"接口404"});
+});
+app.use(function(req,res){
+	res.redirect("/not-found");
+});
 //如果本地环境
 if(process.env.GOMECARTFRONT==="dev"){
 	app.listen(8000,function(){
