@@ -16,7 +16,7 @@ const propTypes = {
 
 function RecentProjects({ posts }) {
   return (
-    <div>
+    <div className={styles.body}>
       <h3 className={styles.title}>最近发布的文章</h3>
       <ul className={styles.list} >
         {posts.map(post => {

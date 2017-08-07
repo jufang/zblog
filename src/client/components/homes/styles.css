@@ -1,13 +1,14 @@
 .title {
+  padding-bottom: 10px;
   font-size: 24px;
   font-size: 2.4rem;
-  border-bottom: 1px solid '#e6e6e6';
+  border-bottom: 1px solid #e6e6e6;
   font-weight: 700;
   color: rgba(0,0,0,0.8);
 }
-
+.body{width: 100%;}
 .button {
-     font-size: 12px;
+  font-size: 12px;
   font-size: 1.2rem;
   display: inline-block;
   height: 37px;

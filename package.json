@@ -6,6 +6,8 @@
     "webpack:prod": "rimraf public/css public/js && webpack --config src/webpack.config.prod.js",
     "webpack:dev": "rimraf public/css public/js && webpack --w --config src/webpack.config.js",
     "build": "webpack --config webpack.config.prod.js",
+    "prod:start": "pm2 start pm2.json",
+    "prod:stop": "pm2 delete blog_front1.0.0",
     "postinstall": "npm build"
   },
   "dependencies": {
@@ -19,8 +21,8 @@
     "ejs": "^2.5.7",
     "express": "~4.13.1",
     "http-proxy-middleware": "^0.17.4",
-    "react": "^15.3.0",
     "material-ui": "^0.16.3",
+    "react": "^15.3.0",
     "react-addons-shallow-compare": "^15.6.0",
     "react-dom": "^15.2.0",
     "react-dropzone": "^3.4.0",
@@ -39,7 +41,6 @@
     "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
-    "nodemon": "~1.9.1",
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.1",
     "babel-polyfill": "^6.3.14",
@@ -47,10 +48,13 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.18",
     "classnames": "*",
+    "cross-env": "^5.0.4",
     "css-loader": "^0.23.1",
-    "imports-loader": "^0.6.5",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "imports-loader": "^0.6.5",
+    "nodemon": "~1.9.1",
+    "pm2": "^2.6.1",
     "react-hot-loader": "^1.3.0",
     "react-router-scroll": "^0.2.1",
     "react-tap-event-plugin": "^2.0.0",
