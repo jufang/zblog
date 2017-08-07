@@ -19,18 +19,18 @@ app.set('view engine', 'ejs');
 
 if(process.env.BLOGFRONT =='production'){
 	app.use('(/cms)?/api/v1',proxy({
-		target:'http://127.0.0.1:3000',
+		target:'http://47.92.115.203:9001',
 		changeOrigin:true,
 		router:{
-			'http://127.0.0.1:8000':'http://127.0.0.1:3000'
+			'http://47.92.115.203:8087':'http://47.92.115.203:9001'
 		}
 	}))
 }else{
 	app.use('(/cms)?/api/v1',proxy({
-		target:'http://47.92.115.203:3000',
+		target:'http://127.0.0.1:3000',
 		changeOrigin:true,
 		router:{
-			'http://47.92.115.203:8087':'http://47.92.115.203:3000'
+			'http://127.0.0.1:8000':'http://127.0.0.1:3000'
 		}
 	}))
 }
