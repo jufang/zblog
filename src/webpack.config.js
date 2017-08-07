@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-eval-source-map',
   context: __dirname,
   entry: {
     'cms': './cms/index.js',
@@ -23,7 +23,6 @@ module.exports = {
           test: /\.global.(scss|css)$/,
           loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
         },
-        
         { test: /\.(jpg|png|gif)$/, loader: 'url-loader', exclude: /node_modules/ }
     ]
   },

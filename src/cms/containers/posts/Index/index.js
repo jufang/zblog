@@ -81,7 +81,7 @@ class PostIndex extends Component {
 
     const newButton = (
       <Link to="/cms/posts/new">
-        <FloatingActionButton style={inlineStyles.floatButton} disableTouchRipple primary>
+        <FloatingActionButton style={inlineStyles.floatButton} disableTouchRipple>
           <ContentAdd />
         </FloatingActionButton>
       </Link>
@@ -91,7 +91,7 @@ class PostIndex extends Component {
       return (
         <section>
           {newButton}
-          <NoContent pageName="posts" />
+          <NoContent />
         </section>
       );
     }

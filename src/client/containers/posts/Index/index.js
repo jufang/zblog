@@ -108,7 +108,7 @@ class PostIndex extends Component {
       return (
         <section >
           <Helmet title="Posts" />
-          <NoContent pageName="posts" />
+          <NoContent/>
         </section>
       );
     }

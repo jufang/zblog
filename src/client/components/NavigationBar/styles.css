@@ -1,0 +1,27 @@
+.appBar{
+  position: relative;
+  width: 100%;
+  display: flex;
+  padding: 4px 10%;
+  height: 56px;
+  line-height: 48px;
+  background-color:#fff;
+  border-bottom: 1px solid #f3f3f3;
+  box-sizing: border-box;
+}
+.logo{
+  flex:1 1 0%;
+  font-size: 1.6rem;
+  font-weight: 400;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.logo a{
+  color:rgb(143, 143, 143)
+}
+.menu {font-size: 14px;font-size: 1.4rem}
+.menu a{
+  margin-left: 15px;
+  color:#009E5D;
+}

@@ -50,7 +50,6 @@ class Image extends Component {
 
   render() {
     const { handleSubmit, submitting, fields: { image, caption } } = this.props;
-
     return (
       <div className={styles.root}>
         <label className={styles.label}>图片区</label>

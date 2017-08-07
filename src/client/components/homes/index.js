@@ -29,7 +29,6 @@ function RecentProjects({ posts }) {
     </div>
   );
 }
-
 RecentProjects.propTypes = propTypes;
 
 export default RecentProjects;

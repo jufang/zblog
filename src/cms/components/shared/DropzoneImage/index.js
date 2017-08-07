@@ -72,7 +72,6 @@ class DropzoneImage extends Component {
           className={styles.dropzone}
           activeClassName={styles.dropzoneActive}
           accept="image/*"
-          multipe={false}
           onDrop={this.handleDrop}
         >
           {this.renderPlaceholder()}

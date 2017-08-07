@@ -5,5 +5,4 @@ export const AUTHOR_PATH = '/authors';
 export const ABOUT_PATH = '/about';
 export const HOME_PATH = '/home';
 
-export const TEST_DOMAIN = 'http://localhost:80';
 

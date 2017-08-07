@@ -9,7 +9,7 @@ import TextEditor from 'shared/components/textEditors/Editor/index'
 import ErrorMessage from 'cms/components/shared/ErrorMessage/index';
 import inlineStyles from 'shared/styles/MaterialUI/index';
 import styles from './styles';
-
+import {deleteUnusedProps} from 'cms/utilities'
 
 const propTypes = {
   fields: PropTypes.object.isRequired,
@@ -69,12 +69,11 @@ class AuthorForm extends Component {
 
   render() {
     const { handleSubmit, submitting, fields: { name, image, description, introduction } } = this.props;
-    
     return (
       <form className={styles.root} onSubmit={handleSubmit(this.handleSubmit)}>
         <h2 className={styles.heading}>关于我</h2>
         <TextField
-          {...name}
+          {...deleteUnusedProps(name,0)}
           floatingLabelText="昵称"
           hintText="请输入您的昵称"
           fullWidth={true}
@@ -85,7 +84,7 @@ class AuthorForm extends Component {
           <label className={styles.label}>简单介绍一下自己吧</label>
           <TextEditor
             key="description"
-            {...description}
+            {...deleteUnusedProps(description,0)}
             handleUpdate={ (value) => { description.onChange(value) }}
           />
         </div>
@@ -93,7 +92,7 @@ class AuthorForm extends Component {
           <label className={styles.label}>具体介绍</label>
           <TextEditor
             key="introduction"
-            {...introduction}
+            {...deleteUnusedProps(introduction,0)}
             handleUpdate={ (value) => { introduction.onChange(value) }}
           />
         </div>

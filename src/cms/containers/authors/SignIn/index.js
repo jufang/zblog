@@ -7,7 +7,7 @@ import ErrorMessage from 'cms/components/shared/ErrorMessage/index';
 import TextField from 'material-ui/TextField';
 import inlineStyles from 'shared/styles/MaterialUI/index';
 import styles from './styles';
-
+import {deleteUnusedProps} from 'cms/utilities'
 
 const propTypes = {
   fields: PropTypes.object.isRequired,
@@ -78,7 +78,7 @@ class AuthorSignIn extends Component {
       <form onSubmit={handleSubmit(this.handleSubmit)} className={styles.root}>
         <h2 className={styles.heading}>登陆</h2>
         <TextField
-          {...email}
+          {...deleteUnusedProps(email,1)}
           type="email"
           hintText="请输入您的邮箱"
           fullWidth={true}
@@ -86,7 +86,7 @@ class AuthorSignIn extends Component {
           style={inlineStyles.textField}
         />
         <TextField
-          {...password}
+          {...deleteUnusedProps(password,0)}
           type="password"
           hintText="请输入密码"
           fullWidth={true}

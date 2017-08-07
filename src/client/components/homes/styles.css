@@ -30,3 +30,21 @@
   list-style: none;
   padding: 0;
 }
+/*recentPost  */
+.root {
+  margin-bottom:20px
+}
+
+.content {
+  font-size: 16px;
+  font-size: 1.6rem;
+  color: rgba(0,0,0,0.8);
+}
+
+
+.leadSentence {
+  margin-top:5px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #8F8F8F;
+}

@@ -1,20 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './styles';
 
-const propTypes = {
-  pageName: PropTypes.string.isRequired,
-};
-
-function NoContent({ pageName }) {
+function NoContent() {
   return (
     <div className={styles.root}>
       <p className={styles.text}>
-        {`we couldn't find any ${pageName}`}
+        您还没有写任何文章哦，点击下方按钮开始你的博客之旅吧~O(∩_∩)O哈哈~
       </p>
     </div>
   );
 }
 
-NoContent.propTypes = propTypes;
 export default NoContent;

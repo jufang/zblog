@@ -18,7 +18,7 @@ const propTypes = {
     publishedAt: PropTypes.string,
     prevId: PropTypes.string,
     prevTitle: PropTypes.string,
-    nextId: PropTypes.number,
+    nextId: PropTypes.string,
     nextTitle: PropTypes.string,
   }).isRequired,
 

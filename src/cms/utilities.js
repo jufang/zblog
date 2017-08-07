@@ -1,6 +1,7 @@
 import client from "axios";
 import { CMS_ROOT_URL } from 'shared/constants/apis';
 import  { getCSRFToken, capitalize } from 'shared/utilities';
+var _ = require('lodash/core')
 
 export const axios = client.create({
   baseURL: CMS_ROOT_URL,
@@ -56,4 +57,11 @@ function convertCamelCaseToSnakeCase(string) {
     }
   );
 }
+const unusedProps = [
+  ["initialValue", "autofill", "onUpdate", "valid", "invalid", "dirty", "pristine","error", "active", "touched", "visited", "autofilled"],
+  ["initialValue", "autofill", "onUpdate", "valid", "invalid", "dirty", "pristine", "active", "touched", "visited", "autofilled"]
+]
 
+export function deleteUnusedProps(data,index){
+  return _.omit(data, unusedProps[index])
+}

@@ -2,7 +2,6 @@ var express=require("express");
 var http=require("http");
 var app=express();
 var compression = require('compression');
-var swig=require("swig");
 var U=require("./util/U.js");
 var router=require("./routes.js");
 var path = require('path');
@@ -15,9 +14,8 @@ app.use(compression());
 // 网页tab的logo
 app.use(favicon(__dirname+"/public/favicon.ico"));
 
-
-app.set("view engine","html");
-app.engine("html",swig.renderFile);
+app.set('views', path.join(__dirname, 'views'));  
+app.set('view engine', 'ejs');  
 
 app.use('(/cms)?/api/v1',proxy({
 	target:'http://127.0.0.1:3000',

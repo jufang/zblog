@@ -13,7 +13,7 @@ import TagField from 'cms/components/shared/TagField/index';
 import ErrorMessage from 'cms/components/shared/ErrorMessage/index';
 import inlineStyles from 'shared/styles/MaterialUI/index';
 import styles from './styles';
-
+import {deleteUnusedProps} from 'cms/utilities'
 
 const propTypes = {
   items: PropTypes.arrayOf(
@@ -156,12 +156,12 @@ class PostForm extends Component {
   render() {
     const submitLabel = this.props.params.id ? '更新' : '创建';
     const { handleSubmit, submitting, fields: { title, publishedAt, leadSentence } } = this.props;
-    
+    if(publishedAt.value==""){publishedAt.value=null}
     return (
       <form onSubmit={handleSubmit(this.handleSubmit)} >
         <h2 className={styles.heading}>{`${submitLabel} 写文章`}</h2>
         <TextField
-          {...title}
+          {...deleteUnusedProps(title,0)}
           floatingLabelText="文章标题"
           hintText="请输入文章标题"
           fullWidth={true}
@@ -169,7 +169,7 @@ class PostForm extends Component {
           style={inlineStyles.textField}
         />
         <TextField
-          {...leadSentence}
+          {...deleteUnusedProps(leadSentence,0)}
           floatingLabelText="简介"
           hintText="请输入简单的介绍"
           fullWidth={true}
@@ -183,7 +183,7 @@ class PostForm extends Component {
             autoOk={true}
             placeholder="发布日期"
             errorText={publishedAt.touched && publishedAt.error ? publishedAt.error : ''}
-            {...publishedAt}
+            {...deleteUnusedProps(publishedAt,1)}
           />
         </div>
         <TagField
