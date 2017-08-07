@@ -1,7 +1,7 @@
 import client from "axios";
 import { CMS_ROOT_URL } from 'shared/constants/apis';
 import  { getCSRFToken, capitalize } from 'shared/utilities';
-var _ = require('lodash/core')
+var _ = require('lodash')
 
 export const axios = client.create({
   baseURL: CMS_ROOT_URL,
