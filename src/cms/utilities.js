@@ -1,7 +1,7 @@
 import client from "axios";
 import { CMS_ROOT_URL } from 'shared/constants/apis';
 import  { getCSRFToken, capitalize } from 'shared/utilities';
-var _ = require('lodash')
+var omit =require('lodash/omit')
 
 export const axios = client.create({
   baseURL: CMS_ROOT_URL,
@@ -43,25 +43,12 @@ export function trimAuthor(params) {
   };
 }
 
-function convertKeyNameInSnakeCase(object) {
-  return Object.keys(object).reduce((newObject, oldKey) => {
-    newObject[convertCamelCaseToSnakeCase(oldKey)] = object[oldKey];
-    return newObject;
-  }, {});
-}
 
-function convertCamelCaseToSnakeCase(string) {
-  return string.replace(/([A-Z])/g,
-    function(string) {
-      return '_' + string.charAt(0).toLowerCase();
-    }
-  );
-}
 const unusedProps = [
   ["initialValue", "autofill", "onUpdate", "valid", "invalid", "dirty", "pristine","error", "active", "touched", "visited", "autofilled"],
   ["initialValue", "autofill", "onUpdate", "valid", "invalid", "dirty", "pristine", "active", "touched", "visited", "autofilled"]
 ]
 
 export function deleteUnusedProps(data,index){
-  return _.omit(data, unusedProps[index])
+  return omit(data, unusedProps[index])
 }
