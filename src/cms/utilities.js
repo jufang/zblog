@@ -43,6 +43,19 @@ export function trimAuthor(params) {
   };
 }
 
+function convertKeyNameInSnakeCase(object) {		 
+  return Object.keys(object).reduce((newObject, oldKey) => {		 
+    newObject[convertCamelCaseToSnakeCase(oldKey)] = object[oldKey];		 
+    return newObject;		 
+  }, {});		 
+}		 	 
+function convertCamelCaseToSnakeCase(string) {		 
+  return string.replace(/([A-Z])/g,		 
+    function(string) {		 
+      return '_' + string.charAt(0).toLowerCase();		 
+    }		 
+  );		 
+}
 
 const unusedProps = [
   ["initialValue", "autofill", "onUpdate", "valid", "invalid", "dirty", "pristine","error", "active", "touched", "visited", "autofilled"],
