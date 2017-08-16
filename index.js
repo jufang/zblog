@@ -19,10 +19,10 @@ app.set('view engine', 'ejs');
 
 if(process.env.BLOGFRONT =='production'){
 	app.use('(/cms)?/api/v1',proxy({
-		target:'http://47.92.115.203:9001',
+		target:'http://47.94.80.72:9001',
 		changeOrigin:true,
 		router:{
-			'http://47.92.115.203:8087':'http://47.92.115.203:9001'
+			'http://47.94.80.72:8087':'http://47.94.80.72:9001'
 		}
 	}))
 }else{

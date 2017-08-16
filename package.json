@@ -49,7 +49,6 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.18",
     "classnames": "*",
-    "cross-env": "^5.0.4",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
