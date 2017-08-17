@@ -21,24 +21,6 @@ const propTypes = {
     nextId: PropTypes.string,
     nextTitle: PropTypes.string,
   }).isRequired,
-
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      targetType: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-      caption: PropTypes.string
-    }).isRequired
-  ),
-
-  tags: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-
   params: PropTypes.shape({
     id: PropTypes.string,
   }),
@@ -55,9 +37,7 @@ const cmsRegexp = /^(\/cms)*/;
 
 function mapStateToProps(state) {
   return {
-    post: state.posts.post,
-    tags: state.tags.tags,
-    items: state.items,
+    post: state.posts.post
   };
 }
 
@@ -101,8 +81,7 @@ class PostShow extends Component {
           prevId={this.props.post.prevId}
           prevTitle={this.props.post.prevTitle}
           nextId={this.props.post.nextId}
-          nextTitle={this.props.post.nextTitle}
-        />
+          nextTitle={this.props.post.nextTitle}/>
       );
     }
   }
@@ -111,7 +90,6 @@ class PostShow extends Component {
     if (!this.props.post || !this.props.post.title) {
       return <section />;
     }
-
     return (
       <section>
         <Helmet
@@ -125,10 +103,10 @@ class PostShow extends Component {
             <span className={styles.time}>{this.props.post.publishedAt}</span>
           </div>
         </div>
-        {this.props.items.map((item) => {
+        {this.props.post.items.map((item) => {
           return <Item key={item.id} item={item} />;
         })}
-        <Tags adminPath={this.adminPath} tags={this.props.tags} />
+        <Tags adminPath={this.adminPath} tags={this.props.post.tags} />
         {this.renderPagination()}
       </section>
     );

@@ -52,7 +52,7 @@ class AboutShow extends Component {
         <TextDisplay description={this.props.about.description} />
         <h2 className={styles.subHeading}>{config.siteName}</h2>
         <div className={styles.siteDescription}>
-          <p className={styles.text}>{config.siteDescription}</p>
+          <p className={styles.text}>个人的react blog，平时记录一些内容在这儿。<br/>前端：react redux material-ui draft-js...<br/>后端：koa mongodb<br/>采用阿里云服务器</p>
         </div>
       </section>
     );

@@ -15,9 +15,15 @@ const INITIAL_STATE = {
   limit: 20, 
   page: 1, 
   total: 0,
-  post: { title: '', publishedAt: null },
+  post: { 
+    title: '',
+    publishedAt: null,
+    items:[],
+    tags:[]
+  },
   postForm: { },
   errorMessage: ''
+  
 };
 
 export default function (state = INITIAL_STATE, action) {

@@ -1,7 +1,5 @@
 import { FETCH_POSTS_INFINITELY, FETCH_POST, RESET_POST } from 'shared/constants/actions';
 import { POST_PATH } from 'shared/constants/apis';
-import { fetchTags } from './tags';
-import { fetchItems } from './items';
 import { axios } from 'client/utilities';
 import { browserHistory } from 'react-router';
 import { createError } from 'shared/actions/errors';
@@ -64,9 +62,9 @@ function fetchPostSuccess(response) {
         prevTitle: response.prevTitle,
         nextId: response.nextId,
         nextTitle: response.nextTitle,
-      },
-      items: response.items,
-      tags: response.tags,
+        items: response.items,
+        tags: response.tags,
+      }
     },
   };
 }
@@ -76,10 +74,6 @@ export function fetchPost(path) {
   return dispatch => {
     return request
       .then(response => dispatch(fetchPostSuccess(response.data)))
-      .then((response) => {
-        dispatch(fetchItems(response.payload.items));
-        dispatch(fetchTags(response.payload.tags));
-      })
       .catch(() => browserHistory.push('/not-found'));
   };
 }
