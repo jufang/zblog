@@ -20,6 +20,7 @@
     "draft-js-prism": "*",
     "ejs": "^2.5.7",
     "express": "~4.13.1",
+    "helmet": "^3.8.1",
     "http-proxy-middleware": "^0.17.4",
     "lodash": "^4.17.4",
     "material-ui": "^0.16.3",

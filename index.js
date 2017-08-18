@@ -7,6 +7,10 @@ var router=require("./routes.js");
 var path = require('path');
 var favicon = require('serve-favicon');
 var proxy = require('http-proxy-middleware');
+var helmet = require('helmet');
+
+
+app.use(helmet())
 
 // gzip 压缩
 app.use(compression());
