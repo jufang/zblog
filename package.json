@@ -6,7 +6,7 @@
     "webpack:prod": "rimraf public/css public/js && webpack --config src/webpack.config.prod.js",
     "webpack:dev": "rimraf public/css public/js && webpack --w --config src/webpack.config.js",
     "build": "webpack --config webpack.config.prod.js",
-    "prod:start": "pm2 start index.js",
+    "prod:start": "pm2 start index.js  --watch='public'",
     "prod:stop": "pm2 stop index",
     "postinstall": "npm build"
   },
