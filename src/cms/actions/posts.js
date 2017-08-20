@@ -6,14 +6,9 @@ import {
   TOGGLE_POST,
 } from 'shared/constants/actions';
 import { POST_PATH } from 'shared/constants/apis';
-import { fetchTagsForm } from './tags';
-import { fetchItems } from './items';
-
-
 import { createError } from 'shared/actions/errors';
 import { createAuthorizedRequest, trimPost } from 'cms/utilities';
 import { browserHistory } from 'react-router';
-
 
 function fetchPostsSuccess(response) {
   return {
@@ -44,10 +39,8 @@ function fetchNewPostSuccess(response) {
     type: FETCH_NEW_POST.SUCCESS,
     payload: {
       items: [],
-      tags: {
-        tags: [],
-        tagSuggestions: response.tagSuggestions,
-      },
+      tags: [],
+      tagSuggestions: response.tagSuggestions,
     },
   };
 }
@@ -57,10 +50,6 @@ export function fetchNewPost() {
   return dispatch => {
     return request
       .then(response => dispatch(fetchNewPostSuccess(response.data)))
-      .then(response => {
-        dispatch(fetchItems(response.payload.items));
-        dispatch(fetchTagsForm(response.payload.tags));
-      })
       .catch(error => dispatch(createError(error)));
   };
 }
@@ -77,10 +66,8 @@ function fetchEditPostSuccess(response) {
         publishedAt: response.publishedAt,
       },
       items: response.items,
-      tags: {
-        tags: response.tags,
-        tagSuggestions: response.tagSuggestions,
-      },
+      tags: response.tags,
+      tagSuggestions: response.tagSuggestions
     },
   };
 }
@@ -90,10 +77,6 @@ export function fetchEditPost(id) {
   return dispatch => {
     return request
       .then(response => dispatch(fetchEditPostSuccess(response.data)))
-      .then((response) => {
-        dispatch(fetchItems(response.payload.items));
-        dispatch(fetchTagsForm(response.payload.tags));
-      })
       .catch(error => dispatch(createError(error)));
   };
 }

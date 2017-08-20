@@ -42,9 +42,9 @@ const propTypes = {
 function mapStateToProps(state) {
   return {
     initialValues: state.posts.postForm,
-    items: state.items,
-    tags: state.tags.tags,
-    tagSuggestions: state.tags.tagSuggestions,
+    items: state.posts.items,
+    tags: state.posts.tags,
+    tagSuggestions: state.posts.tagSuggestions,
     errorMessage: state.posts.errorMessage
   }
 }
@@ -76,7 +76,6 @@ class PostForm extends Component {
     this.handleAddTag = this.handleAddTag.bind(this);
     this.handleDeleteTag = this.handleDeleteTag.bind(this);
   }
-
   componentDidMount() {
     if (this.props.params.id) {
       this.props.fetchEditPost(this.props.params.id)
@@ -105,6 +104,9 @@ class PostForm extends Component {
   }
 
   handleUpdateItem(sortRank, item) {
+    if(!item.id){
+      item.id = new Date() -0
+    }
     this.props.updateItem(sortRank, item);
   }
 
@@ -132,7 +134,7 @@ class PostForm extends Component {
           {this.props.items.map((item, index) => {
             return (
               <Item
-                key={index}
+                key={item.id}
                 sortRank={index}
                 item={item}
                 totalCount={this.props.items.length-1}
