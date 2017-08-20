@@ -6,7 +6,9 @@
     "out_file"   : "/bloglogs/out.log",
     "pid_file"   : "/bloglogs/pid.log",
     "merge_logs":true,
-    "watch":false,
+    "watch":[
+      "public"
+    ],
     "env":{
       "BLOGFRONT":"production"
     }
