@@ -132,9 +132,10 @@ class PostForm extends Component {
       <section className={styles.itemBlock}>
         <ul className={styles.list}>
           {this.props.items.map((item, index) => {
+            var id = item.id || index;
             return (
               <Item
-                key={item.id}
+                key={id} 
                 sortRank={index}
                 item={item}
                 totalCount={this.props.items.length-1}

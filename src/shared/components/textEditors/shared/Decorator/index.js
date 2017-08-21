@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Entity, CompositeDecorator } from 'draft-js';
+import { CompositeDecorator,ContentState } from 'draft-js';
 import MultiDecorator from 'draft-js-multidecorators';
 import PrismDecorator from 'draft-js-prism';
 import styles from './styles';
@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const Link = (props) => {
-  const { url } = Entity.get(props.entityKey).getData();
+  const { url } = props.contentState.getEntity(props.entityKey).getData();
 
   return (
     <a href={url} className={styles.root}>
@@ -23,29 +23,23 @@ const Link = (props) => {
 Link.propTypes = propTypes;
 
 
-function findLinkEntities(contentBlock, callback) {
+function findLinkEntities(contentBlock, callback, contentState) {
   contentBlock.findEntityRanges(
     (character) => {
       const entityKey = character.getEntity();
-      return (
-        entityKey !== null &&
-        Entity.get(entityKey).getType() === 'LINK'
-      );
+      if (entityKey === null) {
+        return false;
+      }
+      return contentState.getEntity(entityKey).getType() === 'LINK'
     },
     callback
   );
 }
 
-export const decorator = new MultiDecorator([
-  // default is javascript;
-  new PrismDecorator({
-    defaultSyntax: 'javascript',
-  }),
-  new CompositeDecorator([
+export const decorator = new CompositeDecorator([
     {
       strategy: findLinkEntities,
       component: Link,
     },
-  ]),
-]);
+  ])
 

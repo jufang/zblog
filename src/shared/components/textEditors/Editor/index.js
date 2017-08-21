@@ -4,9 +4,9 @@ import {
   Editor,
   EditorState,
   RichUtils,
+  ContentState,
   convertFromRaw,
   convertToRaw,
-  Entity,
 } from 'draft-js';
 
 import { getBlockStyle } from './../shared/utilities';
@@ -27,7 +27,6 @@ const propTypes = {
 };
 
 class TextEditor extends Component {
-
   constructor(props) {
     super(props);
 
@@ -85,7 +84,13 @@ class TextEditor extends Component {
   handleConfirmLink(e) {
     e.preventDefault();
     const { editorState, urlValue } = this.state;
-    const entityKey = Entity.create('LINK', 'MUTABLE', { url: urlValue });
+    const contentState = editorState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(
+      'LINK',
+      'MUTABLE',
+      { url: urlValue }
+    );
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
     this.setState({
       editorState: RichUtils.toggleLink(
         editorState,
