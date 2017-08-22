@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CompositeDecorator,ContentState } from 'draft-js';
+import { Entity, CompositeDecorator } from 'draft-js';
 import MultiDecorator from 'draft-js-multidecorators';
 import PrismDecorator from 'draft-js-prism';
 import styles from './styles';
@@ -30,16 +30,21 @@ function findLinkEntities(contentBlock, callback, contentState) {
       if (entityKey === null) {
         return false;
       }
-      return contentState.getEntity(entityKey).getType() === 'LINK'
+      return Entity.get(entityKey).getType() === 'LINK'
     },
     callback
   );
 }
 
-export const decorator = new CompositeDecorator([
+export const decorator = new MultiDecorator([
+  // default is javascript;
+  new PrismDecorator({
+    defaultSyntax: 'javascript',
+  }),
+  new CompositeDecorator([
     {
       strategy: findLinkEntities,
       component: Link,
     },
-  ])
-
+  ]),
+]);

@@ -56,7 +56,11 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       screw_ie8: true,
-      compressor: { warnings: false }
+      compressor: { 
+        drop_debugger: true,
+        drop_console: true,
+        warnings: false
+      }
     })
   ]
 };

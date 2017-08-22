@@ -7,8 +7,15 @@ import {
   ContentState,
   convertFromRaw,
   convertToRaw,
+  getDefaultKeyBinding
 } from 'draft-js';
-
+import {
+  getKeyBinding,
+  hasSelectionInBlock,
+  handleKeyCommand,
+  handleReturn,
+  handleTab
+} from "draft-js-code"
 import { getBlockStyle } from './../shared/utilities';
 import { decorator } from '../shared/Decorator/index';
 import { BlockStyleControls } from '../shared/BlockStyleControl/index';
@@ -50,7 +57,10 @@ class TextEditor extends Component {
     this.handleToggleBlockType = this.handleToggleBlockType.bind(this);
     this.handleChange = (editorState) => this.setState({ editorState });
     this.handleChangeURL = (e) => this.setState({ urlValue: e.target.value });
-    this.handleKeyCommand = this.handleKeyCommand.bind(this);
+    this.handleKeyCommand = (command) => this._handleKeyCommand(command);
+    this.keyBindingFn = (e) => this._keyBindingFn(e);
+    this.onTab = (e) => this._onTab(e);
+    this.onReturn = (e) => this._onReturn(e);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handlePromptForLink = this.handlePromptForLink.bind(this);
     this.handleConfirmLink = this.handleConfirmLink.bind(this);
@@ -65,6 +75,61 @@ class TextEditor extends Component {
     } else if (!nextProps.value) {
       this.state = { editorState: EditorState.createEmpty(decorator) };
     }
+  }
+  _handleKeyCommand(command) {
+    const {editorState} = this.state;
+    let newState;
+
+    if (hasSelectionInBlock(editorState)) {
+        newState = handleKeyCommand(editorState, command);
+    }
+
+    if (!newState) {
+        newState = RichUtils.handleKeyCommand(editorState, command);
+    }
+
+    if (newState) {
+        this.handleChange(newState);
+        return true;
+    }
+    return false;
+  }
+   _keyBindingFn(e) {
+    let editorState = this.state.editorState;
+    let command;
+
+    if (hasSelectionInBlock(editorState)) {
+        command = getKeyBinding(e);
+    }
+    if (command) {
+        return command;
+    }
+
+    return getDefaultKeyBinding(e);
+  }
+   _onTab(e) {
+    let editorState = this.state.editorState;
+
+    if (!hasSelectionInBlock(editorState)) {
+        return;
+    }
+
+    this.handleChange(
+        handleTab(e, editorState)
+    )
+  }
+
+  _onReturn(e) {
+    let editorState = this.state.editorState;
+
+    if (!hasSelectionInBlock(editorState)) {
+        return;
+    }
+
+    this.handleChange(
+        handleReturn(e, editorState)
+    )
+    return true;
   }
 
   handlePromptForLink(e) {
@@ -144,16 +209,6 @@ class TextEditor extends Component {
       )
     );
   }
-
-  handleKeyCommand(command) {
-    const newState = RichUtils.handleKeyCommand(this.state.editorState, command);
-    if (newState) {
-      this.handleChange(newState);
-      return true;
-    }
-    return false;
-  }
-
   renderURLField() {
     if (this.state.inputtable) {
       return (
@@ -198,10 +253,13 @@ class TextEditor extends Component {
             onChange={this.handleChange}
             blockStyleFn={getBlockStyle}
             editorState={editorState}
-            spellCheck
+            handleKeyCommand={this.handleKeyCommand}
+            spellCheck={true}
+            handleReturn={this.onReturn}
+            onTab={this.onTab}
+            keyBindingFn={this.keyBindingFn}
             placeholder="写点东西吧 O(∩_∩)O~"
             ref="editor"
-            handleKeyCommand={this.handleKeyCommand}
           />
         </div>
       </div>
