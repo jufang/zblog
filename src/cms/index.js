@@ -17,7 +17,7 @@ const store = configureStore();
 injectTapEventPlugin();
 
 const accessToken = localStorage.getItem('accessToken');
-if (accessToken) {
+if (accessToken && accessToken!=="undefined") {
   store.dispatch({ type: AUTH.SUCCESS });
 }
 if (process.env.NODE_ENV === 'production') {
@@ -44,4 +44,3 @@ if (process.env.NODE_ENV === 'production') {
   </Provider>
   , document.querySelector('.container'));
 }
-
