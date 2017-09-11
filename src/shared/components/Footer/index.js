@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className={styles.root}>
       <div className={styles.text}>
-        <span>{`© 2017 ${config.authorName}`}</span>
+        <span>{`京ICP备17052038号-1 © 2017 ${config.authorName}`}</span>
         <a href={config.gitHubUrl}>
           <img
             className={styles.gitHubIcon}

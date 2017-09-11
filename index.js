@@ -26,7 +26,7 @@ if(process.env.BLOGFRONT =='production'){
 		target:'http://47.94.80.72:9001',
 		changeOrigin:true,
 		router:{
-			'http://47.94.80.72:8087':'http://47.94.80.72:9001'
+			'http://47.94.80.72:80':'http://47.94.80.72:9001'
 		}
 	}))
 }else{
@@ -51,8 +51,8 @@ app.use(function(req,res){
 //如果本地环境
 
 if(process.env.BLOGFRONT==="production"){
-	app.listen(8087,function(){	
-		console.log(U.formatLong(new Date-0)+"blog app run on port 8087");
+	app.listen(80,function(){	
+		console.log(U.formatLong(new Date-0)+"blog app run on port 80");
 	});
 }else{
 	app.listen(8000,function(){
